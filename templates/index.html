@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Segmentation Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Customer Segmentation Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="laptop_brand">Laptop Brand:</label>
+            <input type="number" name="laptop_brand" placeholder="Enter values: 0 (Acer) - 5 (MacBook)" required>
+            <small class="description">Acer: 0, Asus: 1, Dell: 2, HP: 3, Lenovo: 4, MacBook: 5</small>
+
+            <label for="ram_gb">RAM (GB):</label>
+            <input type="number" step="0.1" name="ram_gb" placeholder="Enter values: 4.0, 8.0, 16.0, 32.0, 64.0" required>
+            <small class="description">Available RAM options: 4.0, 8.0, 16.0, 32.0, 64.0</small>
+
+            <label for="storage">Storage:</label>
+            <input type="number" name="storage" placeholder="Enter values: 0 (HDD), 1 (SSD)" required>
+            <small class="description">HDD: 0, SSD: 1</small>
+
+            <label for="processor">Processor:</label>
+            <input type="number" name="processor" placeholder="Enter values: 0 (I3) - 3 (I9)" required>
+            <small class="description">I3: 0, I5: 1, I7: 2, I9: 3</small>
+
+            <label for="condition">Condition:</label>
+            <input type="number" name="condition" placeholder="Enter values: 0 (Brand New), 1 (Unknown), 2 (Used)" required>
+            <small class="description">Brand New: 0, Unknown: 1, Used: 2</small>
+
+            <label for="price">Price:</label>
+            <input type="number" step="0.1" name="price" placeholder="Enter values between 799 and 20000" required>
+            <small class="description">Price ranges from 799 to 20000</small>
+
+            <label for="region">Region:</label>
+            <input type="number" name="region" placeholder="Enter values: 0 (Ashanti) - 6 (Western Region)" required>
+            <small class="description">Ashanti: 0, Brong Ahafo: 1, Central Region: 2, Eastern Region: 3, Greater Accra: 4, Northern Region: 5, Western Region: 6</small>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        <div id="prediction-result">
+            <!-- The prediction result will be displayed here -->
+            {{ prediction_result }}
+        </div>
+    </div>
+</body>
+</html>
